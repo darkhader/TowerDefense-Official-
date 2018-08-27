@@ -26,9 +26,11 @@ public class GameObject {
     public boolean inAction1 = false;
     public boolean inAction2 = false;
     public boolean inAction3 = false;
+    public boolean inAction4 = false;
     public boolean inAction12 = false;
     public boolean inAction22 = false;
     public boolean inAction32 = false;
+    public boolean inAction42 = false;
     public List<Action> actions;
     public int enemyDied = 0;
     public Random random = new Random();

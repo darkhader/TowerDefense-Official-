@@ -22,6 +22,6 @@ public class GameOverScene implements Scene {
 
     @Override
     public void deinit() {
-        this.clip.stop();
+       this.clip.stop();
     }
 }

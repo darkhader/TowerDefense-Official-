@@ -12,9 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import physic.BoxCollider;
 import physic.PhysicBody;
-import tower.Snow.Goku;
+import tower.songoku.Goku;
 import tower.machineGun.MachineGun;
 import tower.missile.MissileGun;
+import tower.tinker.Fire;
 
 public class GameObjManager {
 
@@ -142,6 +143,35 @@ public class GameObjManager {
                 .findFirst()
                 .orElse(null);
     }
+       public Alien findAlien4() {
+        return (Alien) this.list
+                .stream()
+                .filter(gameObject -> gameObject.isAlive)
+                .filter(gameObject -> gameObject instanceof Alien)
+                .filter(gameObject -> gameObject.inAction4)
+                .findFirst()
+                .orElse(null);
+    }
+
+    public Meteor findMeteor4() {
+        return (Meteor) this.list
+                .stream()
+                .filter(gameObject -> gameObject.isAlive)
+                .filter(gameObject -> gameObject instanceof Meteor)
+                .filter(gameObject -> gameObject.inAction4)
+                .findFirst()
+                .orElse(null);
+    }
+
+    public LinhKa findLinhKa4() {
+        return (LinhKa) this.list
+                .stream()
+                .filter(gameObject -> gameObject.isAlive)
+                .filter(gameObject -> gameObject instanceof LinhKa)
+                .filter(gameObject -> gameObject.inAction4)
+                .findFirst()
+                .orElse(null);
+    }
 
     public AlienMap2 findAlienMap2() {
         return (AlienMap2) this.list
@@ -232,6 +262,35 @@ public class GameObjManager {
                 .findFirst()
                 .orElse(null);
     }
+          public AlienMap2 findAlienMap24() {
+        return (AlienMap2) this.list
+                .stream()
+                .filter(gameObject -> gameObject.isAlive)
+                .filter(gameObject -> gameObject instanceof AlienMap2)
+                .filter(gameObject -> gameObject.inAction42)
+                .findFirst()
+                .orElse(null);
+    }
+
+    public MeteorMap2 findMeteorMap24() {
+        return (MeteorMap2) this.list
+                .stream()
+                .filter(gameObject -> gameObject.isAlive)
+                .filter(gameObject -> gameObject instanceof MeteorMap2)
+                .filter(gameObject -> gameObject.inAction42)
+                .findFirst()
+                .orElse(null);
+    }
+
+    public LinhKaMap2 findLinhKaMap24() {
+        return (LinhKaMap2) this.list
+                .stream()
+                .filter(gameObject -> gameObject.isAlive)
+                .filter(gameObject -> gameObject instanceof LinhKaMap2)
+                .filter(gameObject -> gameObject.inAction42)
+                .findFirst()
+                .orElse(null);
+    }
 
     public Earth findEarth() {
         return (Earth) this.list
@@ -271,6 +330,13 @@ public class GameObjManager {
         return (MissileGun) this.list.stream()
                 .filter(gameObject -> gameObject.isAlive)
                 .filter(gameObject -> gameObject instanceof MissileGun)
+                .findFirst()
+                .orElse(null);
+    }
+    public Fire findFireGun() {
+        return (Fire) this.list.stream()
+                .filter(gameObject -> gameObject.isAlive)
+                .filter(gameObject -> gameObject instanceof Fire)
                 .findFirst()
                 .orElse(null);
     }

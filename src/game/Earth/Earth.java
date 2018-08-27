@@ -21,7 +21,6 @@ import game.enemyMap2.LinhKaMap2;
 import game.enemyMap2.MeteorMap2;
 import input.KeyBoardInput;
 
-
 import physic.BoxCollider;
 import physic.PhysicBody;
 import physic.RunHitObject;
@@ -40,7 +39,7 @@ public class Earth extends GameObject implements PhysicBody {
     private RunHitObject runHitObjectAlien2;
     private RunHitObject runHitObjectMeteor2;
     private RunHitObject runHitObjectLinhKa2;
-    public int enemyDiedOnEarth = 0;
+
     private FrameCounter frameCounter;
 
     public Earth() {
@@ -54,7 +53,7 @@ public class Earth extends GameObject implements PhysicBody {
         this.runHitObjectMeteor2 = new RunHitObject(MeteorMap2.class);
         this.runHitObjectLinhKa2 = new RunHitObject(LinhKaMap2.class);
         this.health = 200;
-        this.frameCounter = new FrameCounter(5000);
+        this.frameCounter = new FrameCounter(10000);
     }
 
     public void run() {
@@ -69,13 +68,13 @@ public class Earth extends GameObject implements PhysicBody {
         if (this.frameCounter.run() && GameObjManager.instance.hiep == 0) {
             SceneManager.instance.changeScene(new Map2Scene());
             GameObjManager.instance.hiep = 1;
-            KeyBoardInput.instance.isSpace=false;
+            KeyBoardInput.instance.isSpace = false;
             this.frameCounter.reset();
         }
         if (this.frameCounter.run() && GameObjManager.instance.hiep == 1) {
             SceneManager.instance.changeScene(new Map1Scene());
             GameObjManager.instance.hiep = 0;
-            KeyBoardInput.instance.isSpace=false;
+            KeyBoardInput.instance.isSpace = false;
         }
 
     }
@@ -88,14 +87,15 @@ public class Earth extends GameObject implements PhysicBody {
     @Override
     public void getHit(GameObject gameObject) {
         this.health -= gameObject.damage;
-       
-  
+
         gameObject.isAlive = false;
-        enemyDiedOnEarth++;
+
         if (this.health <= 0) {
             this.isAlive = false;
-          
-             SceneManager.instance.changeScene(new GameOverScene());
+            SceneManager.instance.changeScene(new GameOverScene());
+        }
+        if(this.isAlive==false){
+            SceneManager.instance.changeScene(new GameOverScene());
         }
 
     }

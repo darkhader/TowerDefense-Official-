@@ -5,6 +5,7 @@
  */
 package tower.machineGun;
 
+import base.FrameCounter;
 import base.GameObjManager;
 import base.GameObject;
 import base.Vector2D;
@@ -31,7 +32,7 @@ public class BulletMachineGun extends GameObject implements PhysicBody {
     private RunHitObject runHitObject;
     private RunHitObject runHitObjectMeteor;
     private RunHitObject runHitObjectLinhKa;
-   
+    private FrameCounter frameCounter;
 
     public BulletMachineGun() {
         this.velocity = new Vector2D();
@@ -40,7 +41,7 @@ public class BulletMachineGun extends GameObject implements PhysicBody {
         this.runHitObject = new RunHitObject(Alien.class);
         this.runHitObjectMeteor = new RunHitObject(Meteor.class);
         this.runHitObjectLinhKa = new RunHitObject(LinhKa.class);
-        
+        this.frameCounter = new FrameCounter(20);
         this.damage = 1;
 
     }
@@ -53,42 +54,25 @@ public class BulletMachineGun extends GameObject implements PhysicBody {
         this.runHitObject.run(this);
         this.runHitObjectMeteor.run(this);
         this.runHitObjectLinhKa.run(this);
-        this.velocity.set(0, 0);
+
         Alien alienMap1 = GameObjManager.instance.findAlien1();
         Meteor meteorMap1 = GameObjManager.instance.findMeteor1();
         LinhKa linhKaMap1 = GameObjManager.instance.findLinhKa1();
-        
-        if (alienMap1 != null && meteorMap1 == null && linhKaMap1 == null) {
+
+
+        if (linhKaMap1 != null) {
+            this.update(linhKaMap1.position);
+        } else if (meteorMap1 != null) {
+            this.update(meteorMap1.position);
+        } else if (alienMap1 != null) {
             this.update(alienMap1.position);
         }
-        if (alienMap1 == null && linhKaMap1 == null && meteorMap1 == null) {
+        else this.isAlive =false;
+        if (frameCounter.run()) {
             this.isAlive = false;
+            frameCounter.reset();
         }
-        if (meteorMap1 != null && alienMap1 == null && linhKaMap1 == null) {
-            this.update(meteorMap1.position);
-        }
-        if (alienMap1 != null && meteorMap1 != null && linhKaMap1 == null) {
-            this.update(meteorMap1.position);
-        }
-        if (alienMap1 != null && meteorMap1 != null && linhKaMap1 != null) {
-            this.update(linhKaMap1.position);
-        }
-//        if (alienMap2 != null && meteorMap2 == null && linhKaMap2 == null) {
-//            this.update(alienMap2.position);
-//        }
-//        if (alienMap2 == null && linhKaMap2 == null && meteorMap2 == null) {
-//            this.isAlive = false;
-//        }
-//        if (meteorMap2!= null && alienMap2 == null && linhKaMap2 == null) {
-//            this.update(meteorMap2.position);
-//        }
-//        if (alienMap2 != null && meteorMap2 != null && linhKaMap2 == null) {
-//            this.update(meteorMap2.position);
-//        }
-//        if (alienMap2 != null && meteorMap2 != null && linhKaMap2 != null) {
-//            this.update(linhKaMap2.position);
-//        }
-     
+
     }
 
     private void update(Vector2D position) {

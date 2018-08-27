@@ -6,10 +6,11 @@ import base.Vector2D;
 import physic.BoxCollider;
 import physic.PhysicBody;
 import renderer.ImageRenderer;
-import tower.Snow.Goku;
-import tower.Snow.Kamejoko;
+import tower.songoku.Goku;
+import tower.songoku.Kamejoko;
 import tower.machineGun.MachineGun;
 import tower.missile.MissileGun;
+import tower.tinker.Fire;
 
 public class MeteorMap2 extends GameObject implements PhysicBody {
 
@@ -101,6 +102,16 @@ public class MeteorMap2 extends GameObject implements PhysicBody {
                 this.inAction32 = false;
             }
 
+        }
+           Fire fireGun = GameObjManager.instance.findFireGun();
+        if (fireGun != null) {
+            float d = (float) Math.sqrt(Math.pow((fireGun.position.x - this.position.x), 2)
+                    + Math.pow((fireGun.position.y - this.position.y), 2));
+             if (d < 300) {
+                this.inAction42 = true;
+            } else {
+                this.inAction42 = false;
+            }
         }
     }
 }

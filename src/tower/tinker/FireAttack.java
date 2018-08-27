@@ -26,7 +26,7 @@ public class FireAttack implements Attribute<Fire> {
 
         if (this.frameCounter.run()) {
             BulletFire bulletTinker = GameObjManager.instance.recycle(BulletFire.class);
-            bulletTinker.position.set(gameObject.position.x - 25, gameObject.position.y - 2);
+            bulletTinker.position.set(gameObject.position.x, gameObject.position.y);
           
                 this.frameCounter.reset();
             

@@ -59,7 +59,7 @@ public class PlayerMove implements Attribute<Player> {
                 gameObject.position.y = 150;
             }
         }
-   
+  
         this.backToScreen(gameObject.position);
     }
 

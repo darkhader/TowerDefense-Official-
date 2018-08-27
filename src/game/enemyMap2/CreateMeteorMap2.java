@@ -21,9 +21,9 @@ public class CreateMeteorMap2 extends GameObject {
     public void ConfigAction() {
         this.addAction(
                 new SequenceAction(new WaitAction(10),
-                        new LimitAction(20,
+                        new LimitAction(30,
                                 new SequenceAction(
-                                        new WaitAction(200),
+                                        new WaitAction(150),
                                         new ActionAdapter() {
                                             public boolean run(GameObject owner) {
                                                  if(KeyBoardInput.instance.isSpace){

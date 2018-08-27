@@ -22,7 +22,7 @@ public class CreateAlienMap2 extends GameObject{
         this.addAction(
                 new LimitAction(1000,
                         new SequenceAction(
-                                new WaitAction(10),
+                                new WaitAction(8),
                                 new ActionAdapter() {
                                     public boolean run(GameObject owner) {
                                         if(KeyBoardInput.instance.isSpace){

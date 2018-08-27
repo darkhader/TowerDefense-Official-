@@ -5,6 +5,7 @@
  */
 package tower.machineGun;
 
+import base.FrameCounter;
 import base.GameObjManager;
 import base.GameObject;
 import base.Vector2D;
@@ -31,6 +32,7 @@ public class BulletMachineGun2 extends GameObject implements PhysicBody {
     private RunHitObject runHitObject;
     private RunHitObject runHitObjectMeteor;
     private RunHitObject runHitObjectLinhKa;
+    private FrameCounter frameCounter;
    
 
     public BulletMachineGun2() {
@@ -40,7 +42,7 @@ public class BulletMachineGun2 extends GameObject implements PhysicBody {
         this.runHitObject = new RunHitObject(AlienMap2.class);
         this.runHitObjectMeteor = new RunHitObject(MeteorMap2.class);
         this.runHitObjectLinhKa = new RunHitObject(LinhKaMap2.class);
-        
+        this.frameCounter = new FrameCounter(30);
         this.damage = 1;
 
     }
@@ -53,26 +55,24 @@ public class BulletMachineGun2 extends GameObject implements PhysicBody {
         this.runHitObject.run(this);
         this.runHitObjectMeteor.run(this);
         this.runHitObjectLinhKa.run(this);
-        this.velocity.set(0, 0);
+     
    
         AlienMap2 alienMap2 = GameObjManager.instance.findAlienMap2();
         MeteorMap2 meteorMap2 = GameObjManager.instance.findMeteorMap21();
         LinhKaMap2 linhKaMap2 = GameObjManager.instance.findLinhKaMap21();
    
-        if (alienMap2 != null && meteorMap2 == null && linhKaMap2 == null) {
+     
+          if (linhKaMap2 != null) {
+            this.update(linhKaMap2.position);
+        } else if (meteorMap2 != null) {
+            this.update(meteorMap2.position);
+        } else if (alienMap2 != null) {
             this.update(alienMap2.position);
         }
-        if (alienMap2 == null && linhKaMap2 == null && meteorMap2 == null) {
+        else this.isAlive =false;
+        if (frameCounter.run()) {
             this.isAlive = false;
-        }
-        if (meteorMap2!= null && alienMap2 == null && linhKaMap2 == null) {
-            this.update(meteorMap2.position);
-        }
-        if (alienMap2 != null && meteorMap2 != null && linhKaMap2 == null) {
-            this.update(meteorMap2.position);
-        }
-        if (alienMap2 != null && meteorMap2 != null && linhKaMap2 != null) {
-            this.update(linhKaMap2.position);
+            frameCounter.reset();
         }
      
     }

@@ -12,9 +12,10 @@ import base.Vector2D;
 import physic.BoxCollider;
 import physic.PhysicBody;
 import renderer.ImageRenderer;
-import tower.Snow.Goku;
+import tower.songoku.Goku;
 import tower.machineGun.MachineGun;
 import tower.missile.MissileGun;
+import tower.tinker.Fire;
 
 /**
  *
@@ -80,7 +81,6 @@ public class Alien extends GameObject implements PhysicBody {
             }
 
         }
-     
 
     }
 
@@ -89,8 +89,8 @@ public class Alien extends GameObject implements PhysicBody {
         this.health -= gameObject.damage;
         if (health <= 0) {
             this.isAlive = false;
-            
-            GameObjManager.instance.allEnemyDied+=1;
+
+            GameObjManager.instance.allEnemyDied += 1;
         }
 
     }
@@ -132,6 +132,16 @@ public class Alien extends GameObject implements PhysicBody {
                 this.inAction3 = false;
             }
 
+        }
+        Fire fireGun = GameObjManager.instance.findFireGun();
+        if (fireGun != null) {
+            float d = (float) Math.sqrt(Math.pow((fireGun.position.x - this.position.x), 2)
+                    + Math.pow((fireGun.position.y - this.position.y), 2));
+             if (d < 300) {
+                this.inAction4 = true;
+            } else {
+                this.inAction4 = false;
+            }
         }
     }
 }

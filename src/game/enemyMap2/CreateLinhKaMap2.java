@@ -21,9 +21,9 @@ public class CreateLinhKaMap2 extends GameObject {
     public void ConfigAction() {
         this.addAction(
                 new SequenceAction(new WaitAction(10),
-                        new LimitAction(10,
+                        new LimitAction(20,
                                 new SequenceAction(
-                                        new WaitAction(500),
+                                        new WaitAction(400),
                                         new ActionAdapter() {
                                             public boolean run(GameObject owner) {
                                                  if(KeyBoardInput.instance.isSpace){

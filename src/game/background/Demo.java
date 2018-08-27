@@ -28,7 +28,7 @@ public class Demo extends GameObject {
         super.render(graphics);
         this.position.set(10, 30);
         this.renderer = new TextRenderer("Money:  "
-                + GameObjManager.instance.allEnemyDied + " Gold", Color.yellow, "resources/FiraMono-Bold.ttf", 16);
+        + GameObjManager.instance.allEnemyDied + " Gold", Color.yellow, "resources/FiraMono-Bold.ttf", 16);
 
         Earth earth = GameObjManager.instance.findEarth();
         if (earth != null) {

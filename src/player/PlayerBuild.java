@@ -8,7 +8,7 @@ package player;
 import base.Attribute;
 import base.GameObjManager;
 import input.KeyBoardInput;
-import tower.Snow.Goku;
+import tower.songoku.Goku;
 import tower.machineGun.MachineGun;
 import tower.missile.MissileGun;
 import tower.tinker.Fire;
@@ -38,12 +38,12 @@ public class PlayerBuild implements Attribute<Player> {
             GameObjManager.instance.allEnemyDied -=25;
 
         }
-        if (KeyBoardInput.instance.is2 && m != 0 &&  GameObjManager.instance.allEnemyDied >=50) {
+        if (KeyBoardInput.instance.is2 && m != 0 &&  GameObjManager.instance.allEnemyDied >=100) {
             c = gameObject.position.x;
             d = gameObject.position.y;
             GameObjManager.instance.recycle(Fire.class);
             m = m - 1;
-             GameObjManager.instance.allEnemyDied -=50;
+             GameObjManager.instance.allEnemyDied -=100;
 
 
         }
@@ -55,12 +55,12 @@ public class PlayerBuild implements Attribute<Player> {
                  GameObjManager.instance.allEnemyDied -=50;
 
         }
-        if (KeyBoardInput.instance.is4 && i != 0 &&  GameObjManager.instance.allEnemyDied >=100) {
+        if (KeyBoardInput.instance.is4 && i != 0 &&  GameObjManager.instance.allEnemyDied >=200) {
             g = gameObject.position.x;
             h = gameObject.position.y;
              GameObjManager.instance.recycle(Goku.class);
             i = i - 1;
-                 GameObjManager.instance.allEnemyDied -=100;
+                 GameObjManager.instance.allEnemyDied -=200;
 
         }
 

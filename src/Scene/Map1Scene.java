@@ -34,6 +34,6 @@ private Clip clip;
       @Override
       public void deinit () {
         GameObjManager.instance.clear();
-        this.clip.stop();
+       this.clip.stop();
       }
   }
