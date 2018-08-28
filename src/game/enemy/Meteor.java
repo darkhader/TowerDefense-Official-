@@ -17,13 +17,12 @@ import tower.machineGun.MachineGun;
 import tower.missile.MissileGun;
 import tower.tinker.Fire;
 
-
 /**
  *
  * @author Hiep Nguyen
  */
 public class Meteor extends GameObject implements PhysicBody {
-    
+
     public Vector2D velocity;
     private int count = 10;
     public BoxCollider boxCollider;
@@ -35,24 +34,26 @@ public class Meteor extends GameObject implements PhysicBody {
         this.damage = 10;
         this.health = 10;
     }
-    
+
     @Override
     public void run() {
         super.run();
         this.position.addUp(this.velocity);
         this.getInsight(this);
-       
-        this.boxCollider.position.set(this.position.x - 25, this.position.y - 25);
 
-        
-       if (this.position.x < 300) {
+        this.boxCollider.position.set(this.position.x - 25, this.position.y - 25);
+        if (this.position.x > 300 && this.position.x <302 && this.position.y >= 299 && this.position.y < 302) {
+            this.isAlive = false;
+        }
+
+        if (this.position.x < 300) {
             this.velocity.set(1, 0);
         }
-         if (this.position.x == 300 ) {//di xuong 300 300
+        if (this.position.x == 300) {//di xuong 300 300
             this.velocity.set(0, 1);
         }
-        if ( this.position.y == 480 ) {//re phai 300 500
-            this.velocity.set(1,0);
+        if (this.position.y == 480) {//re phai 300 500
+            this.velocity.set(1, 0);
         }
         if (this.position.x == 500 && this.position.y == 480) {//di len 500 500
             this.velocity.set(0, -2);
@@ -68,26 +69,24 @@ public class Meteor extends GameObject implements PhysicBody {
         }
 
     }
-    
+
     @Override
     public void getHit(GameObject gameObject) {
         this.health -= gameObject.damage;
         if (health <= 0) {
             this.isAlive = false;
-            GameObjManager.instance.allEnemyDied +=10;
+            GameObjManager.instance.allEnemyDied += 10;
         }
-        if(gameObject instanceof Kamejoko){
+        if (gameObject instanceof Kamejoko) {
             this.velocity.set(0, 0);
         }
     }
-    
 
-    
     @Override
     public BoxCollider getBoxCollider() {
         return this.boxCollider;
     }
-    
+
     @Override
     public void getInsight(GameObject gameObject) {
         MachineGun machine = GameObjManager.instance.findGun();
@@ -98,9 +97,9 @@ public class Meteor extends GameObject implements PhysicBody {
             } else {
                 this.inAction1 = false;
             }
-            
+
         }
-    Goku goku = GameObjManager.instance.findGoku();
+        Goku goku = GameObjManager.instance.findGoku();
         if (goku != null) {
             if (Math.sqrt(Math.pow((goku.position.x - this.position.x), 2)
                     + Math.pow((goku.position.y - this.position.y), 2)) < 100) {
@@ -110,18 +109,18 @@ public class Meteor extends GameObject implements PhysicBody {
             }
 
         }
-      MissileGun missileGun = GameObjManager.instance.findMissileGun();
+        MissileGun missileGun = GameObjManager.instance.findMissileGun();
         if (missileGun != null) {
             float d = (float) Math.sqrt(Math.pow((missileGun.position.x - this.position.x), 2)
                     + Math.pow((missileGun.position.y - this.position.y), 2));
-            if (d < 1000 && d > 500) {
+            if (d < 700 && d > 200) {
                 this.inAction3 = true;
             } else {
                 this.inAction3 = false;
             }
 
         }
-         Fire fireGun = GameObjManager.instance.findFireGun();
+        Fire fireGun = GameObjManager.instance.findFireGun();
         if (fireGun != null) {
             float d = (float) Math.sqrt(Math.pow((fireGun.position.x - this.position.x), 2)
                     + Math.pow((fireGun.position.y - this.position.y), 2));

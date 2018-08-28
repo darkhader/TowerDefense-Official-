@@ -33,9 +33,7 @@ public class BulletFire extends GameObject implements PhysicBody {
     private RunHitObject runHitObject;
     private RunHitObject runHitObject1;
     private RunHitObject runHitObjectLinhKa;
-    private RunHitObject runHitObject2;
-    private RunHitObject runHitObject12;
-    private RunHitObject runHitObjectLinhKa2;
+
     private FrameCounter frameCounter;
 
     public BulletFire() {
@@ -45,9 +43,7 @@ public class BulletFire extends GameObject implements PhysicBody {
         this.runHitObject = new RunHitObject(Alien.class);
         this.runHitObject1 = new RunHitObject(Meteor.class);
         this.runHitObjectLinhKa = new RunHitObject(LinhKa.class);
-        this.runHitObject2 = new RunHitObject(AlienMap2.class);
-        this.runHitObject12 = new RunHitObject(MeteorMap2.class);
-        this.runHitObjectLinhKa2 = new RunHitObject(LinhKaMap2.class);
+
 
         this.frameCounter = new FrameCounter(70);
         this.damage = 1;
@@ -62,18 +58,13 @@ public class BulletFire extends GameObject implements PhysicBody {
         this.runHitObject.run(this);
         this.runHitObject1.run(this);
         this.runHitObjectLinhKa.run(this);
-        this.runHitObject2.run(this);
-        this.runHitObject12.run(this);
-        this.runHitObjectLinhKa2.run(this);
+ 
         this.velocity.set(0, 0);
     Alien alienMap1 = GameObjManager.instance.findAlien4();
         Meteor meteorMap1 = GameObjManager.instance.findMeteor4();
         LinhKa linhKaMap1 = GameObjManager.instance.findLinhKa4();
-        AlienMap2 alienMap2 = GameObjManager.instance.findAlienMap24();
-        MeteorMap2 meteorMap2 = GameObjManager.instance.findMeteorMap24();
-        LinhKaMap2 linhKaMap2 = GameObjManager.instance.findLinhKaMap24();
-        if(meteorMap1 !=null || alienMap1!=null || linhKaMap1!=null ||
-                alienMap2!=null ||   meteorMap2!=null ||  linhKaMap2!=null){
+       
+        if(meteorMap1 !=null || alienMap1!=null || linhKaMap1!=null ){
             if(this.position.x>473 && this.position.x< 660 && this.position.y>100){
                 this.updateVelocity();
             }

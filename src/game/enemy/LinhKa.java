@@ -28,6 +28,7 @@ public class LinhKa extends GameObject implements PhysicBody {
     public Vector2D velocity;
     private int count = 5;
     public BoxCollider boxCollider;
+    
 
     public LinhKa() {
         this.velocity = new Vector2D();
@@ -43,6 +44,9 @@ public class LinhKa extends GameObject implements PhysicBody {
         this.position.addUp(this.velocity);
         this.getInsight(this);
         this.boxCollider.position.set(this.position.x - 10, this.position.y - 25);
+        if(this.position.x >300 && this.position.x <302 &&this.position.y >=299 && this.position.y<302){
+            this.isAlive=false;
+        }
         if (this.position.x < 300) {
             this.velocity.set(1, 0);
         }
@@ -110,7 +114,7 @@ public class LinhKa extends GameObject implements PhysicBody {
         if (missileGun != null) {
             float d = (float) Math.sqrt(Math.pow((missileGun.position.x - this.position.x), 2)
                     + Math.pow((missileGun.position.y - this.position.y), 2));
-            if (d < 1000 && d > 500) {
+            if (d < 700 && d > 200) {
                 this.inAction3 = true;
             } else {
                 this.inAction3 = false;

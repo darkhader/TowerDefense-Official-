@@ -34,20 +34,22 @@ public class MeteorMap2 extends GameObject implements PhysicBody {
         this.getInsight(this);
 
         this.boxCollider.position.set(this.position.x - 20, this.position.y - 20);
-
-          if(this.position.x<360){
-         this.velocity.set(3, -1);
+        if (this.position.x > 360 && this.position.x < 366 &&this.position.y <= 160 && this.position.y > 158) {
+            this.isAlive = false;
         }
-        if (this.position.x == 360) {
+        if (this.position.x < 360) {
+            this.velocity.set(3, -1);
+        }
+        if (this.position.y == 160) {
             this.velocity.set(1.5f, 3);
         }
-        if (this.position.x == 459 ) {//di xuong 300 300
+        if (this.position.x == 459) {//di xuong 300 300
             this.velocity.set(3, -1.5f);
         }
         if (this.position.x == 645) {//re phai 300 500
             this.velocity.set(1, 3);
         }
-        if (this.position.x == 717 ) {//di len 500 500
+        if (this.position.x == 717) {//di len 500 500
             this.velocity.set(3, -2);
         }
 
@@ -96,18 +98,18 @@ public class MeteorMap2 extends GameObject implements PhysicBody {
         if (missileGun != null) {
             float d = (float) Math.sqrt(Math.pow((missileGun.position.x - this.position.x), 2)
                     + Math.pow((missileGun.position.y - this.position.y), 2));
-            if (d < 1000 && d > 500) {
+            if (d < 700 && d > 200) {
                 this.inAction32 = true;
             } else {
                 this.inAction32 = false;
             }
 
         }
-           Fire fireGun = GameObjManager.instance.findFireGun();
+        Fire fireGun = GameObjManager.instance.findFireGun();
         if (fireGun != null) {
             float d = (float) Math.sqrt(Math.pow((fireGun.position.x - this.position.x), 2)
                     + Math.pow((fireGun.position.y - this.position.y), 2));
-             if (d < 300) {
+            if (d < 100) {
                 this.inAction42 = true;
             } else {
                 this.inAction42 = false;

@@ -20,7 +20,6 @@ private Clip clip;
       GameObjManager.instance.add(new Background());
       GameObjManager.instance.add(new CreateEarth());
       GameObjManager.instance.add(new Player());
-
       GameObjManager.instance.add(new Demo());
       GameObjManager.instance.add(new HealthBar());
       GameObjManager.instance.add(new CreateAlien());

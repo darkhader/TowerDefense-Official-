@@ -126,7 +126,7 @@ public class Alien extends GameObject implements PhysicBody {
         if (missileGun != null) {
             float d = (float) Math.sqrt(Math.pow((missileGun.position.x - this.position.x), 2)
                     + Math.pow((missileGun.position.y - this.position.y), 2));
-            if (d < 1000 && d > 500) {
+            if (d < 700 && d > 200) {
                 this.inAction3 = true;
             } else {
                 this.inAction3 = false;

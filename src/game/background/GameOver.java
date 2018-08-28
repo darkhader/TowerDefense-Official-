@@ -16,6 +16,7 @@ import input.KeyBoardInput;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import renderer.TextRenderer;
 
 /**
  *
@@ -26,19 +27,22 @@ public class GameOver extends GameObject {
     public GameOver() {
 
     }
-public void run(){
-        GameObjManager.instance.add( new EarthDeath());
-    if(KeyBoardInput.instance.isR){
-        SceneManager.instance.changeScene(new Map1Scene());
+
+    public void run() {
+   
+        GameObjManager.instance.add(new EarthDeath());
+        
+        if (KeyBoardInput.instance.isR) {
+            GameObjManager.instance.allEnemyDied=50;
+            SceneManager.instance.changeScene(new Map1Scene());
+        }
     }
-}
 
     public void render(Graphics graphics) {
-        graphics.setColor(Color.WHITE);
-        graphics.setFont(new Font("Arial", Font.BOLD, 33));
-        graphics.drawString("GameOver         Score:" + GameObjManager.instance.allEnemyDied, 300, 300);
-      
-        }
-   
+        super.render(graphics);
+        this.position.set(300, 300);
+        this.renderer = new TextRenderer("GameOver         Score:" + GameObjManager.instance.allEnemyDied, Color.yellow, "resources/FiraMono-Bold.ttf", 33);
+
     }
 
+}
