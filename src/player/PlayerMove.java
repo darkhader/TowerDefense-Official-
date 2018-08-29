@@ -24,18 +24,18 @@ public class PlayerMove implements Attribute<Player> {
     public void run(Player gameObject) {
 
         if (KeyBoardInput.instance.isLeft) {
-            gameObject.position.subtractBy(2, 0);
+            gameObject.position.subtractBy(4, 0);
         }
 
         if (KeyBoardInput.instance.isRight) {
-            gameObject.position.addUp(2, 0);
+            gameObject.position.addUp(4, 0);
         }
 
         if (KeyBoardInput.instance.isUp) {
-            gameObject.position.subtractBy(0, 2);
+            gameObject.position.subtractBy(0, 4);
         }
         if (KeyBoardInput.instance.isDown) {
-            gameObject.position.addUp(0, 2);
+            gameObject.position.addUp(0, 4);
         }
  // System.out.println("x "+gameObject.position.x +" y "+gameObject.position.y);
         this.backToScreen(gameObject.position);

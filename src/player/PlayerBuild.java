@@ -38,12 +38,12 @@ public class PlayerBuild implements Attribute<Player> {
             GameObjManager.instance.allEnemyDied -=25;
 
         }
-        if (KeyBoardInput.instance.is2 && m != 0 &&  GameObjManager.instance.allEnemyDied >=1) {
+        if (KeyBoardInput.instance.is2 && m != 0 &&  GameObjManager.instance.allEnemyDied >=100) {
             c = gameObject.position.x;
             d = gameObject.position.y;
             GameObjManager.instance.recycle(Fire.class);
             m = m - 1;
-             GameObjManager.instance.allEnemyDied -=1;
+             GameObjManager.instance.allEnemyDied -=100;
 
 
         }
