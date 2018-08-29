@@ -26,14 +26,14 @@ public class FireAttack implements Attribute<Fire> {
 
     public void run(Fire gameObject) {
 
-        if (this.frameCounter.run() && GameObjManager.instance.hiep==1) {
+        if (this.frameCounter.run() && GameObjManager.instance.hiep==0) {
             BulletFire bulletTinker = GameObjManager.instance.recycle(BulletFire.class);
             bulletTinker.position.set(gameObject.position.x, gameObject.position.y);
           
                 this.frameCounter.reset();
             
         }
-        if (this.frameCounter1.run() && GameObjManager.instance.hiep==0) {
+        if (this.frameCounter1.run() && GameObjManager.instance.hiep==1) {
             BulletFire2 bulletTinker2 = GameObjManager.instance.recycle(BulletFire2.class);
             bulletTinker2.position.set(gameObject.position.x,gameObject.position.y);
           

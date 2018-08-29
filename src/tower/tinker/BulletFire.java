@@ -44,8 +44,7 @@ public class BulletFire extends GameObject implements PhysicBody {
         this.runHitObject1 = new RunHitObject(Meteor.class);
         this.runHitObjectLinhKa = new RunHitObject(LinhKa.class);
 
-
-        this.frameCounter = new FrameCounter(70);
+        this.frameCounter = new FrameCounter(50);
         this.damage = 1;
 
     }
@@ -58,48 +57,58 @@ public class BulletFire extends GameObject implements PhysicBody {
         this.runHitObject.run(this);
         this.runHitObject1.run(this);
         this.runHitObjectLinhKa.run(this);
- 
+
         this.velocity.set(0, 0);
-    Alien alienMap1 = GameObjManager.instance.findAlien4();
+        Alien alienMap1 = GameObjManager.instance.findAlien4();
         Meteor meteorMap1 = GameObjManager.instance.findMeteor4();
         LinhKa linhKaMap1 = GameObjManager.instance.findLinhKa4();
-       
-        if(meteorMap1 !=null || alienMap1!=null || linhKaMap1!=null ){
-            if(this.position.x>473 && this.position.x< 660 && this.position.y>100){
+        Fire fire = GameObjManager.instance.findFireGun();
+        if (meteorMap1 != null || alienMap1 != null || linhKaMap1 != null ) {
+            if (fire.position.x > 530 && fire.position.x < 630 && fire.position.y > 125 && fire.position.y < 545) {
                 this.updateVelocity();
             }
-            if(this.position.x>278 && this.position.x< 380 && this.position.y>100 && this.position.y<485){
+            if (fire.position.x > 340 && fire.position.x < 400 && fire.position.y > 250 && fire.position.y < 440) {
                 this.updateVelocity();
             }
-            if(this.position.x>800 && this.position.x< 900 && this.position.y>100 && this.position.y<260){
+            if (fire.position.x > 850 && fire.position.x < 900 && fire.position.y > 80 && fire.position.y < 240) {
                 this.updateVelocity();
             }
-            
-            if(this.position.x>400 && this.position.x< 535 && this.position.y>100){
+
+            if (fire.position.x > 410 && fire.position.x < 470 && fire.position.y > 125 && fire.position.y < 545) {
                 this.updateVelocity1();
             }
-            if(this.position.x>200 && this.position.x< 340 && this.position.y>100 && this.position.y<485){
+            if (fire.position.x > 200 && fire.position.x < 280 && fire.position.y > 330 && fire.position.y < 520) {
                 this.updateVelocity1();
             }
-            if(this.position.x>750 && this.position.x< 860 && this.position.y>100 && this.position.y<500){
+            if (fire.position.x > 740 && fire.position.x < 800 && fire.position.y > 125 && fire.position.y < 310) {
                 this.updateVelocity1();
             }
-            if(this.position.x>0 && this.position.x< 200 && this.position.y>255){
+
+            if (fire.position.x > 0 && fire.position.x < 280 && fire.position.y > 320 && fire.position.y < 380) {
                 this.updateVelocity2();
             }
-            if(this.position.y>450){
+            if (fire.position.y > 490 && fire.position.x > 270 && fire.position.x < 540) {
                 this.updateVelocity2();
             }
-            if(this.position.x>=660 && this.position.x<= 750 && this.position.y>70 && this.position.y<200){
+            if (fire.position.x >= 630 && fire.position.x <= 740 && fire.position.y > 125 && fire.position.y < 200) {
                 this.updateVelocity2();
             }
-            if(this.position.x>=780 && this.position.x<= 1000 && this.position.y>260 && this.position.y<500){
+            if (fire.position.x >= 800 && fire.position.x <= 1000 && fire.position.y > 330 && fire.position.y < 400) {
                 this.updateVelocity2();
             }
-           
-            else this.updateVelocity3();
+
+            if (fire.position.y > 220 && fire.position.y < 260 && fire.position.x < 340) {
+                this.updateVelocity3();
+            }
+
+            if (fire.position.y < 76 && fire.position.x > 460 && fire.position.x < 860) {
+                this.updateVelocity3();
+            }
+            if (fire.position.y > 200 && fire.position.y < 256 && fire.position.x >= 900 && fire.position.x < 960) {
+                this.updateVelocity3();
+            }
+
         }
-        
 
         if (frameCounter.run()) {
             this.isAlive = false;
@@ -123,52 +132,55 @@ public class BulletFire extends GameObject implements PhysicBody {
             this.velocity.set(random.nextInt(3) - 3, random.nextInt(3) - 1);
         }
     }
+
     public void updateVelocity1() {
 
-        this.velocity.set(random.nextInt(3) , random.nextInt(3) - 1);
+        this.velocity.set(random.nextInt(3), random.nextInt(3) - 1);
         if (count == 4) {
-            this.velocity.set(random.nextInt(3) , random.nextInt(3) - 1);
+            this.velocity.set(random.nextInt(3), random.nextInt(3) - 1);
         }
         if (count == 3) {
-            this.velocity.set(random.nextInt(3) , random.nextInt(3) - 1);
+            this.velocity.set(random.nextInt(3), random.nextInt(3) - 1);
         }
         if (count == 2) {
-            this.velocity.set(random.nextInt(3) , random.nextInt(3) - 1);
+            this.velocity.set(random.nextInt(3), random.nextInt(3) - 1);
         }
         if (count == 1) {
-            this.velocity.set(random.nextInt(3) , random.nextInt(3) - 1);
+            this.velocity.set(random.nextInt(3), random.nextInt(3) - 1);
         }
     }
+
     public void updateVelocity2() {
 
-        this.velocity.set(random.nextInt(3) , random.nextInt(3) - 3);
+        this.velocity.set(random.nextInt(3), random.nextInt(3) - 3);
         if (count == 4) {
-            this.velocity.set(random.nextInt(3) , random.nextInt(3) - 3);
+            this.velocity.set(random.nextInt(3), random.nextInt(3) - 3);
         }
         if (count == 3) {
-            this.velocity.set(random.nextInt(3) , random.nextInt(3) - 3);
+            this.velocity.set(random.nextInt(3), random.nextInt(3) - 3);
         }
         if (count == 2) {
-            this.velocity.set(random.nextInt(3) , random.nextInt(3) - 3);
+            this.velocity.set(random.nextInt(3), random.nextInt(3) - 3);
         }
         if (count == 1) {
-            this.velocity.set(random.nextInt(3) , random.nextInt(3) - 3);
+            this.velocity.set(random.nextInt(3), random.nextInt(3) - 3);
         }
     }
+
     public void updateVelocity3() {
 
-        this.velocity.set(random.nextInt(3)-1 , random.nextInt(3) );
+        this.velocity.set(random.nextInt(3) - 1, random.nextInt(3));
         if (count == 4) {
-            this.velocity.set(random.nextInt(3)-1 , random.nextInt(3));
+            this.velocity.set(random.nextInt(3) - 1, random.nextInt(3));
         }
         if (count == 3) {
-            this.velocity.set(random.nextInt(3)-1 , random.nextInt(3) );
+            this.velocity.set(random.nextInt(3) - 1, random.nextInt(3));
         }
         if (count == 2) {
-            this.velocity.set(random.nextInt(3)-1 , random.nextInt(3) );
+            this.velocity.set(random.nextInt(3) - 1, random.nextInt(3));
         }
         if (count == 1) {
-            this.velocity.set(random.nextInt(3)- 1 , random.nextInt(3) );
+            this.velocity.set(random.nextInt(3) - 1, random.nextInt(3));
         }
     }
 

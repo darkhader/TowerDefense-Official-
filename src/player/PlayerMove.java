@@ -24,42 +24,20 @@ public class PlayerMove implements Attribute<Player> {
     public void run(Player gameObject) {
 
         if (KeyBoardInput.instance.isLeft) {
-            gameObject.position.subtractBy(5, 0);
+            gameObject.position.subtractBy(2, 0);
         }
 
         if (KeyBoardInput.instance.isRight) {
-            gameObject.position.addUp(5, 0);
+            gameObject.position.addUp(2, 0);
         }
 
         if (KeyBoardInput.instance.isUp) {
-            gameObject.position.subtractBy(0, 5);
-            if (gameObject.position.y > 250 && gameObject.position.y < 330 && gameObject.position.x < 270) {
-                gameObject.position.y = 250;
-            }
-            if (gameObject.position.y > 440 && gameObject.position.y < 530
-                    && gameObject.position.x > 350 && gameObject.position.x < 470) {
-                gameObject.position.y = 440;
-            }
-            if (gameObject.position.y > 55 && gameObject.position.y < 150
-                    && gameObject.position.x > 540 && gameObject.position.x < 790) {
-                gameObject.position.y = 55;
-            }
+            gameObject.position.subtractBy(0, 2);
         }
         if (KeyBoardInput.instance.isDown) {
-            gameObject.position.addUp(0, 5);
-            if (gameObject.position.y > 250 && gameObject.position.y < 330 && gameObject.position.x < 270) {
-                gameObject.position.y = 330;
-            }
-            if (gameObject.position.y > 440 && gameObject.position.y < 530
-                    && gameObject.position.x > 350 && gameObject.position.x < 470) {
-                gameObject.position.y = 530;
-            }
-            if (gameObject.position.y > 55 && gameObject.position.y < 150
-                    && gameObject.position.x > 540 && gameObject.position.x < 790) {
-                gameObject.position.y = 150;
-            }
+            gameObject.position.addUp(0, 2);
         }
-  
+ // System.out.println("x "+gameObject.position.x +" y "+gameObject.position.y);
         this.backToScreen(gameObject.position);
     }
 

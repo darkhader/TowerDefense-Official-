@@ -336,6 +336,7 @@ public class GameObjManager {
     public Fire findFireGun() {
         return (Fire) this.list.stream()
                 .filter(gameObject -> gameObject.isAlive)
+                .filter(gameObject -> gameObject.inAction1)
                 .filter(gameObject -> gameObject instanceof Fire)
                 .findFirst()
                 .orElse(null);
